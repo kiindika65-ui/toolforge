@@ -38,6 +38,14 @@ export const metadata: Metadata = {
 
   },
 
+
+  verification: {
+
+    google:
+      "uEF78kyaYjFPj5secT5dOhsSbm_Fom0HdTAmoQHsG0A",
+
+  },
+
 };
 
 
