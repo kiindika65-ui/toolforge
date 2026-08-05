@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import ToolCard from "@/components/ToolCard";
+import ToolSearch from "@/components/ToolSearch";
 import { tools } from "@/data/tools";
 
 
@@ -10,9 +11,14 @@ export default function Home() {
   return (
 
     <>
+
       <Navbar />
 
       <Hero />
+
+
+      <ToolSearch />
+
 
 
       <section className="bg-gray-50 py-20">
@@ -21,21 +27,28 @@ export default function Home() {
 
 
           <h2 className="mb-10 text-center text-4xl font-bold">
-            Featured Tools
+            Popular Tools
           </h2>
+
 
 
           <div className="grid gap-6 md:grid-cols-3">
 
 
             {tools.map((tool)=>(
-              
+
               <ToolCard
+
                 key={tool.title}
+
                 title={tool.title}
+
                 description={tool.description}
+
                 icon={tool.icon}
+
                 link={tool.link}
+
               />
 
             ))}

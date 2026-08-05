@@ -2,25 +2,21 @@
 
 import { useState } from "react";
 
+
 export default function PasswordGenerator() {
 
   const [password, setPassword] = useState("");
+
   const [length, setLength] = useState(12);
 
-  const [uppercase, setUppercase] = useState(true);
-  const [lowercase, setLowercase] = useState(true);
-  const [numbers, setNumbers] = useState(true);
-  const [symbols, setSymbols] = useState(true);
+  const [copied, setCopied] = useState(false);
+
 
 
   function generatePassword() {
 
-    let characters = "";
-
-    if (uppercase) characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    if (lowercase) characters += "abcdefghijklmnopqrstuvwxyz";
-    if (numbers) characters += "0123456789";
-    if (symbols) characters += "!@#$%^&*()_+";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
 
 
     let result = "";
@@ -28,15 +24,17 @@ export default function PasswordGenerator() {
 
     for (let i = 0; i < length; i++) {
 
-      const random =
+      const randomIndex =
         Math.floor(Math.random() * characters.length);
 
-      result += characters[random];
+
+      result += characters[randomIndex];
 
     }
 
 
     setPassword(result);
+    setCopied(false);
 
   }
 
@@ -44,7 +42,12 @@ export default function PasswordGenerator() {
 
   function copyPassword() {
 
+    if (!password) return;
+
+
     navigator.clipboard.writeText(password);
+
+    setCopied(true);
 
   }
 
@@ -54,12 +57,11 @@ export default function PasswordGenerator() {
 
     <main className="min-h-screen bg-gray-50 px-6 py-20">
 
-
       <div className="mx-auto max-w-xl rounded-2xl bg-white p-8 shadow-lg">
 
 
         <h1 className="text-center text-4xl font-bold">
-          Password Generator
+          🔐 Password Generator
         </h1>
 
 
@@ -71,111 +73,84 @@ export default function PasswordGenerator() {
 
         <div className="mt-8">
 
-
-          <input
-            value={password}
-            readOnly
-            placeholder="Your password"
-            className="w-full rounded-xl border p-4 text-center text-xl"
-          />
-
-
-          <button
-            onClick={copyPassword}
-            className="mt-3 w-full rounded-xl bg-gray-800 py-3 text-white hover:bg-gray-900"
-          >
-            Copy Password
-          </button>
-
-
-        </div>
-
-
-
-
-        <div className="mt-8">
-
-
           <label className="font-semibold">
             Password Length: {length}
           </label>
 
 
           <input
+
             type="range"
-            min="4"
+
+            min="6"
+
             max="32"
+
             value={length}
-            onChange={(e)=>setLength(Number(e.target.value))}
+
+            onChange={(e) =>
+              setLength(Number(e.target.value))
+            }
+
             className="mt-3 w-full"
+
           />
-
-
-        </div>
-
-
-
-
-        <div className="mt-6 space-y-3">
-
-
-          <label className="flex gap-3">
-            <input
-              type="checkbox"
-              checked={uppercase}
-              onChange={(e)=>setUppercase(e.target.checked)}
-            />
-            Uppercase Letters
-          </label>
-
-
-
-          <label className="flex gap-3">
-            <input
-              type="checkbox"
-              checked={lowercase}
-              onChange={(e)=>setLowercase(e.target.checked)}
-            />
-            Lowercase Letters
-          </label>
-
-
-
-          <label className="flex gap-3">
-            <input
-              type="checkbox"
-              checked={numbers}
-              onChange={(e)=>setNumbers(e.target.checked)}
-            />
-            Numbers
-          </label>
-
-
-
-          <label className="flex gap-3">
-            <input
-              type="checkbox"
-              checked={symbols}
-              onChange={(e)=>setSymbols(e.target.checked)}
-            />
-            Symbols
-          </label>
-
 
         </div>
 
 
 
         <button
+
           onClick={generatePassword}
+
           className="mt-8 w-full rounded-xl bg-blue-600 py-3 font-semibold text-white hover:bg-blue-700"
+
         >
           Generate Password
         </button>
 
 
-      </div>
 
+
+        {password && (
+
+          <div className="mt-8 rounded-xl bg-gray-100 p-5">
+
+
+            <p className="break-all text-center text-xl font-bold">
+              {password}
+            </p>
+
+
+
+            <button
+
+              onClick={copyPassword}
+
+              className="mt-5 w-full rounded-xl bg-gray-900 py-3 text-white"
+
+            >
+              Copy Password
+            </button>
+
+
+
+            {copied && (
+
+              <p className="mt-3 text-center text-green-600">
+                Password copied!
+              </p>
+
+            )}
+
+
+          </div>
+
+        )}
+
+
+      </div>
 
     </main>
 

@@ -1,29 +1,116 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+
+
 export default function Navbar() {
+
+  const [open, setOpen] = useState(false);
+
+
   return (
-    <nav className="w-full border-b bg-white">
+
+    <nav className="bg-white shadow">
+
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <h1 className="text-2xl font-bold text-blue-600">
+
+
+        <Link
+          href="/"
+          className="text-2xl font-bold text-blue-600"
+        >
           ToolForge
-        </h1>
+        </Link>
 
-        <div className="hidden gap-6 md:flex">
-          <a href="#" className="hover:text-blue-600">
+
+
+        <div className="hidden gap-8 md:flex">
+
+
+          <Link href="/">
             Home
-          </a>
+          </Link>
 
-          <a href="#" className="hover:text-blue-600">
-            Categories
-          </a>
 
-          <a href="#" className="hover:text-blue-600">
+          <Link href="/tools">
             Tools
-          </a>
+          </Link>
 
-          <a href="#" className="hover:text-blue-600">
+
+          <Link href="/about">
             About
-          </a>
+          </Link>
+
+
+          <Link href="/contact">
+            Contact
+          </Link>
+
+
         </div>
+
+
+
+        <button
+
+          onClick={() => setOpen(!open)}
+
+          className="text-3xl md:hidden"
+
+        >
+          ☰
+        </button>
+
+
       </div>
+
+
+
+      {open && (
+
+        <div className="space-y-4 border-t px-6 py-5 md:hidden">
+
+
+          <Link
+            href="/"
+            className="block"
+          >
+            Home
+          </Link>
+
+
+          <Link
+            href="/tools"
+            className="block"
+          >
+            Tools
+          </Link>
+
+
+          <Link
+            href="/about"
+            className="block"
+          >
+            About
+          </Link>
+
+
+          <Link
+            href="/contact"
+            className="block"
+          >
+            Contact
+          </Link>
+
+
+        </div>
+
+      )}
+
+
     </nav>
+
   );
+
 }
