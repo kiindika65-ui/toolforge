@@ -27,17 +27,14 @@ export const metadata: Metadata = {
 
   openGraph: {
 
-    title:
-      "ToolForge - Free Online Tools",
+    title: "ToolForge - Free Online Tools",
 
     description:
       "Fast, simple and free online tools for everyone.",
 
-    type:
-      "website",
+    type: "website",
 
   },
-
 
   verification: {
 
