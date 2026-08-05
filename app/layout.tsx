@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
 
-  title: "ToolForge - Free Online Tools",
+  title: "ToolForge - Free Online Tools 🚀",
 
   description:
     "Free online tools including calculators, generators, converters and developer utilities.",
