@@ -41,4 +41,44 @@ export const tools = [
   link: "/tools/qr-generator",
   category: "Generators",
 },
+{
+  title: "Unit Converter",
+  description:
+    "Convert length, weight and temperature units.",
+  icon: "🔄",
+  link: "/tools/unit-converter",
+  category: "Converters",
+},
+{
+  title: "Case Converter",
+  description:
+    "Convert text to uppercase, lowercase and title case.",
+  icon: "🔤",
+  link: "/tools/case-converter",
+  category: "Text Tools",
+},
+{
+  title: "JSON Formatter",
+  description:
+    "Format, validate and minify JSON data.",
+  icon: "💻",
+  link: "/tools/json-formatter",
+  category: "Developer Tools",
+},
+{
+  title: "URL Encoder / Decoder",
+  description:
+    "Encode and decode URLs quickly and easily.",
+  icon: "🔗",
+  link: "/tools/url-encoder",
+  category: "Developer Tools",
+},
+{
+  title: "Percentage Calculator",
+  description:
+    "Calculate percentages, increases and decreases.",
+  icon: "📊",
+  link: "/tools/percentage-calculator",
+  category: "Calculators",
+},
 ];
